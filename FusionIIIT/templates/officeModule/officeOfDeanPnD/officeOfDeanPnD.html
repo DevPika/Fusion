@@ -40,13 +40,10 @@
             <div class="ui huge fluid vertical pointing menu"
                  style="max-width: 320px;">
 
-            {% if "Civil_JE" in desig or "Civil_AE" in desig or "EE" in desig or "DeanPnD" in desig or "Director" in desig or "Electrical_JE" in desig or "Electrical_AE" in desig %}
                 <a class="active item" data-tab="first">
                     Incoming Files
                     <i class="right floated chevron right icon"></i>
-                </a>
-            {% endif %}
-            
+                </a>           
 
                 <a class="item" data-tab="second">
                     Outgoing Files
@@ -56,12 +53,14 @@
                     View Requisitions
                     <i class="right floated chevron right icon"></i>
                 </a>
-        {% if "Civil_JE" in desig or "Civil_AE" in desig or "EE" in desig or "DeanPnD" in desig or "Director" in desig or "Electrical_JE" in desig or "Electrical_AE" in desig %}
                 <a class="item" data-tab="fourth">
                     Work Assignments
                     <i class="right floated chevron right icon"></i>
                 </a>
-        {% endif %}
+                <a class="item" data-tab="fifth">
+                    Dashboard
+                    <i class="right floated chevron right icon"></i>
+                </a>
         
                 <!-- <a class="item" data-tab="fifth">
                     Search Assignments
@@ -105,11 +104,18 @@
                     {% include 'officeModule/officeOfDeanPnD/workAssignments.html' %}
                {% endblock %}
             </div>
+            <div class="ui tab segment" data-tab="fifth">
+              {% block form5 %}
+                    {% include 'officeModule/officeOfDeanPnD/dashboardPnD.html' %}
+               {% endblock %}
+            </div>
+            {% comment %}
             <!-- <div class="ui tab segment" data-tab="fifth">
               {% block form5 %}
                     {% include 'officeModule/officeOfDeanPnD/searchAssignments.html' %}
                {% endblock %}
             </div> -->
+            {% endcomment %}
             {% comment %}The Publications ends here!{% endcomment %}
 
         </div>
@@ -175,6 +181,9 @@
             $("#loader").removeClass("active");
             $("#loader").addClass("disabled");
         }
+    </script>
+    <script type="text/javascript">
+        $(".progress").progress('set progress', 70); 
     </script>
 
 {% endblock %}
